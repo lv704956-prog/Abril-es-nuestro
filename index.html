@@ -56,6 +56,8 @@ body,html{
 h1{font-size:3rem; margin-bottom:20px;}
 h2{margin-bottom:20px;}
 
+/* BOTONES */
+
 button{
     padding:12px 25px;
     border:none;
@@ -164,6 +166,40 @@ button:hover{
     to{opacity:1;}
 }
 
+/* BOTON FINAL */
+
+.continue-btn{
+    margin-top:30px;
+    background:white;
+    color:#ff4d6d;
+}
+
+.continue-btn:hover{
+    background:#ffe3ec;
+}
+
+/* CARTA ULTRA FINAL */
+
+.ultimate-letter{
+    margin-top:40px;
+    background:white;
+    color:#333;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    max-width:700px;
+    opacity:0;
+    transform:translateY(30px);
+    transition:1.5s;
+    display:none;
+}
+
+.ultimate-letter.active{
+    display:block;
+    opacity:1;
+    transform:translateY(0);
+}
+
 </style>
 </head>
 
@@ -247,6 +283,24 @@ Si el mundo se acaba mañana,<br>
 que nos encuentre mirando el mar. ♾️
 </div>
 
+<button id="continueBtn" class="continue-btn" onclick="openUltimate()">
+✨ ¿Seguimos escribiendo nuestra historia?
+</button>
+
+<div id="ultimateLetter" class="ultimate-letter">
+<h3>Para ti, siempre.</h3>
+<p>No sé en qué momento dejaste de ser coincidencia y te convertiste en destino.</p>
+<p>No sé en qué momento dejé de imaginar el futuro sola y empecé a imaginarlo contigo.</p>
+<p>Si la vida nos regala años, quiero que sean contigo.</p>
+<p>Si el mundo cambia, quiero cambiar a tu lado.</p>
+<p>Y si algún día olvidamos todo, que nunca olvidemos que nos elegimos.</p>
+<p>Porque amarte no fue casualidad. Fue la decisión más hermosa que he tomado.</p>
+<p style="font-size:1.3rem; margin-top:15px;">
+Y si me preguntas si quiero seguir escribiendo esta historia…<br>
+La respuesta siempre será sí. ♾️
+</p>
+</div>
+
 </div>
 </div>
 
@@ -255,8 +309,6 @@ que nos encuentre mirando el mar. ♾️
 </audio>
 
 <script>
-
-/* GALERIA */
 
 var slides={
 11:["foto11-1.jpeg","foto11-2.jpeg","foto11-3.jpeg"],
@@ -282,13 +334,9 @@ currentIndex[day]=slides[day].length-1;
 document.getElementById("img"+day).src=slides[day][currentIndex[day]];
 }
 
-/* CARTAS */
-
 function openLetter(id){
 document.getElementById(id).classList.toggle("active");
 }
-
-/* FINAL */
 
 function openFinal(){
 var letter=document.getElementById("letter20");
@@ -306,6 +354,11 @@ createStars();
 }else{
 finalMessage.style.opacity="0";
 }
+}
+
+function openUltimate(){
+var letter=document.getElementById("ultimateLetter");
+letter.classList.add("active");
 }
 
 function createStars(){

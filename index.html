@@ -10,41 +10,35 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Georgia', serif;
+    font-family:'Georgia',serif;
 }
 
-body, html{
-    height:100%;
-    overflow-x:hidden;
+body,html{
     scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
 /* HERO */
 
 .hero{
     height:100vh;
-    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
     color:white;
-    padding:20px;
     position:relative;
 }
 
 .overlay{
-    background:rgba(0,0,0,0.4);
     position:absolute;
     width:100%;
     height:100%;
-    top:0;
-    left:0;
-    z-index:1;
+    background:rgba(0,0,0,0.5);
 }
 
 .content{
@@ -59,23 +53,11 @@ body, html{
     to{opacity:1; transform:translateY(0);}
 }
 
-h1{
-    font-size:3rem;
-    margin-bottom:20px;
-}
-
-h2{
-    margin-bottom:20px;
-    font-size:2rem;
-}
-
-p{
-    margin-bottom:15px;
-    line-height:1.6;
-}
+h1{font-size:3rem; margin-bottom:20px;}
+h2{margin-bottom:20px;}
 
 button{
-    padding:10px 20px;
+    padding:12px 25px;
     border:none;
     background:#ff4d6d;
     color:white;
@@ -90,14 +72,16 @@ button:hover{
     transform:scale(1.05);
 }
 
+/* SECCIONES */
+
 .section{
     min-height:100vh;
-    background:#fff0f3;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:40px;
+    padding:60px 20px;
+    background:#fff0f3;
 }
 
 .story{
@@ -115,8 +99,7 @@ button:hover{
 }
 
 .gallery img{
-    width:400px;
-    max-width:90%;
+    width:350px;
     border-radius:20px;
     box-shadow:0 10px 30px rgba(0,0,0,0.3);
     transition:0.5s;
@@ -125,46 +108,60 @@ button:hover{
 /* CARTA */
 
 .letter{
-    display:none;
     margin-top:20px;
-    padding:30px;
     background:white;
-    color:#333;
+    padding:30px;
     border-radius:15px;
     box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    animation:fadeInLetter 1s ease forwards;
+    display:none;
+    animation:fadeIn 1s ease forwards;
 }
 
-@keyframes fadeInLetter{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+.letter.active{
+    display:block;
+}
+
+/* VIAJE */
+
+.viaje{
+    background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    position:relative;
+}
+
+.viaje .overlay{
+    background:rgba(0,0,0,0.6);
+}
+
+.viaje .story{
+    position:relative;
+    z-index:2;
+}
+
+.final-message{
+    margin-top:40px;
+    font-size:2rem;
+    opacity:0;
+    transition:2s;
 }
 
 /* ESTRELLAS */
 
-#stars{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:3;
-}
-
 .star{
     position:absolute;
-    width:8px;
-    height:8px;
+    width:3px;
+    height:3px;
     background:white;
     border-radius:50%;
-    box-shadow:0 0 10px white;
-    animation:float 6s linear forwards;
+    animation:twinkle 2s infinite alternate;
+    z-index:1;
 }
 
-@keyframes float{
-    from{transform:translateY(100vh); opacity:1;}
-    to{transform:translateY(-10vh); opacity:0;}
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
 }
 
 </style>
@@ -172,18 +169,16 @@ button:hover{
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
     <div class="overlay"></div>
     <div class="content">
         <h1>Desde el 20 de abril de 2024… hasta el infinito ♾️</h1>
         <h2>11 • 13 • 20 — Abril no es un mes, es nuestra historia.</h2>
-        <button id="musicBtn" onclick="playMusic()">🎵 Nuestra Canción</button>
     </div>
 </div>
 
-<div id="stars"></div>
-
-<!-- 11 -->
+<!-- DIA 11 -->
 <div class="section">
 <div class="story">
 <h2>11 de abril</h2>
@@ -197,16 +192,14 @@ button:hover{
 <button onclick="openLetter('letter11')">💌 Leer esta carta</button>
 
 <div id="letter11" class="letter">
-<p>Tú y yo no sabíamos lo que estaba empezando.</p>
-<p>Era solo una conversación más… o eso parecía.</p>
-<p>Pero algo cambió.</p>
-<p>Y desde entonces, abril dejó de ser un mes cualquiera.</p>
+<p>Todo empezó sin que supiéramos.</p>
+<p>Una conversación que se volvió costumbre.</p>
+<p>Y una costumbre que se volvió hogar.</p>
+</div>
+</div>
 </div>
 
-</div>
-</div>
-
-<!-- 13 -->
+<!-- DIA 13 -->
 <div class="section">
 <div class="story">
 <h2>13 de abril</h2>
@@ -220,19 +213,19 @@ button:hover{
 <button onclick="openLetter('letter13')">💌 Leer esta carta</button>
 
 <div id="letter13" class="letter">
-<p>Contigo todo se sentía distinto.</p>
-<p>Las risas duraban más.</p>
-<p>El silencio no incomodaba.</p>
-<p>Y mi corazón empezó a reconocerte como hogar.</p>
+<p>Ya no era casualidad.</p>
+<p>Era intención. Era elección.</p>
+<p>Era empezar a sentir algo que no se podía ignorar.</p>
+</div>
+</div>
 </div>
 
-</div>
-</div>
+<!-- DIA 20 VIAJE -->
+<div class="section viaje">
+<div class="overlay"></div>
 
-<!-- 20 -->
-<div class="section">
 <div class="story">
-<h2>20 de abril</h2>
+<h2>20 de abril — Frente al mar 🌊</h2>
 
 <div class="gallery">
 <button onclick="prevSlide(20)">⬅</button>
@@ -240,16 +233,18 @@ button:hover{
 <button onclick="nextSlide(20)">➡</button>
 </div>
 
-<button onclick="openLetter('letter20')">💌 Leer esta carta</button>
+<button onclick="openFinal()">💌 Abrir la carta del mar</button>
 
 <div id="letter20" class="letter">
-<p>Desde ese día entendí algo…</p>
-<p>Tú y yo no coincidimos.</p>
-<p>Nos encontramos.</p>
-<p style="margin-top:20px; font-style:italic;">
-Y esta historia… todavía no termina.<br>
-Solo está esperando el sonido del mar.
-</p>
+<p>Y entonces estábamos ahí.</p>
+<p>El mar frente a nosotros…</p>
+<p>Y yo entendiendo que no quería ningún otro paisaje si tú estabas al lado.</p>
+<p>Ese día supe que eras casa.</p>
+</div>
+
+<div id="finalMessage" class="final-message">
+Si el mundo se acaba mañana,<br>
+que nos encuentre mirando el mar. ♾️
 </div>
 
 </div>
@@ -261,50 +256,67 @@ Solo está esperando el sonido del mar.
 
 <script>
 
-function playMusic(){
-    var music = document.getElementById("music");
-    var btn = document.getElementById("musicBtn");
+/* GALERIA */
 
-    music.play();
-    btn.innerHTML = "🎵 Está sonando nuestra canción...";
-    btn.style.background = "#6a0572";
-    createStars();
-}
-
-function createStars(){
-    const starsContainer = document.getElementById("stars");
-    for(let i=0; i<60; i++){
-        const star = document.createElement("div");
-        star.className = "star";
-        star.style.left = Math.random() * window.innerWidth + "px";
-        star.style.top = window.innerHeight + "px";
-        starsContainer.appendChild(star);
-        setTimeout(() => { star.remove(); }, 6000);
-    }
-}
-
-function openLetter(id){
-    document.getElementById(id).style.display = "block";
-}
-
-var slides = {
-    11:["foto11-1.jpeg","foto11-2.jpeg","foto11-3.jpeg"],
-    13:["foto13-1.jpeg","foto13-2.jpeg","foto13-3.jpeg"],
-    20:["foto20-1.jpeg","foto20-2.jpeg","foto20-3.jpeg"]
+var slides={
+11:["foto11-1.jpeg","foto11-2.jpeg","foto11-3.jpeg"],
+13:["foto13-1.jpeg","foto13-2.jpeg","foto13-3.jpeg"],
+20:["foto20-1.jpeg","foto20-2.jpeg","foto20-3.jpeg"]
 };
 
-var currentIndex = {11:0,13:0,20:0};
+var currentIndex={11:0,13:0,20:0};
 
 function nextSlide(day){
-    currentIndex[day]++;
-    if(currentIndex[day] >= slides[day].length){ currentIndex[day]=0; }
-    document.getElementById("img"+day).src = slides[day][currentIndex[day]];
+currentIndex[day]++;
+if(currentIndex[day]>=slides[day].length){
+currentIndex[day]=0;
+}
+document.getElementById("img"+day).src=slides[day][currentIndex[day]];
 }
 
 function prevSlide(day){
-    currentIndex[day]--;
-    if(currentIndex[day] < 0){ currentIndex[day]=slides[day].length-1; }
-    document.getElementById("img"+day).src = slides[day][currentIndex[day]];
+currentIndex[day]--;
+if(currentIndex[day]<0){
+currentIndex[day]=slides[day].length-1;
+}
+document.getElementById("img"+day).src=slides[day][currentIndex[day]];
+}
+
+/* CARTAS */
+
+function openLetter(id){
+document.getElementById(id).classList.toggle("active");
+}
+
+/* FINAL */
+
+function openFinal(){
+var letter=document.getElementById("letter20");
+var finalMessage=document.getElementById("finalMessage");
+var music=document.getElementById("music");
+
+letter.classList.toggle("active");
+
+if(letter.classList.contains("active")){
+music.play();
+setTimeout(function(){
+finalMessage.style.opacity="1";
+},2000);
+createStars();
+}else{
+finalMessage.style.opacity="0";
+}
+}
+
+function createStars(){
+for(let i=0;i<40;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.animationDelay=Math.random()*3+"s";
+document.querySelector(".viaje").appendChild(star);
+}
 }
 
 </script>

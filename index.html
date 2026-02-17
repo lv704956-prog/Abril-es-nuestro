@@ -1,103 +1,42 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Historia</title>
+<title>Abril es nuestro</title>
 
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: 'Georgia', serif;
-    }
+body{
+    margin:0;
+    padding:0;
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
 
-    body, html{
-        height:100%;
-        overflow-x:hidden;
-        scroll-behavior:smooth;
-    }
+h1{
+    margin-top:100px;
+    font-size:40px;
+}
 
-    .hero{
-        height:100vh;
-        background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
-        background-size:cover;
-        background-position:center;
-        background-attachment:fixed;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        color:white;
-        padding:20px;
-    }
+button{
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:#e94560;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-    .overlay{
-        background:rgba(0,0,0,0.4);
-        position:absolute;
-        width:100%;
-        height:100%;
-        top:0;
-        left:0;
-    }
+button:hover{
+    transform:scale(1.1);
+}
 
-    .content{
-        position:relative;
-        z-index:2;
-        animation:fadeIn 3s ease forwards;
-        opacity:0;
-    }
-
-    @keyframes fadeIn{
-        from{
-            opacity:0;
-            transform:translateY(30px);
-        }
-        to{
-            opacity:1;
-            transform:translateY(0);
-        }
-    }
-
-    h1{
-        font-size:3rem;
-        margin-bottom:20px;
-    }
-
-    h2{
-        font-weight:normal;
-        font-size:1.5rem;
-        margin-bottom:30px;
-    }
-
-    button{
-        padding:12px 25px;
-        border:none;
-        background:#ff4d6d;
-        color:white;
-        font-size:1rem;
-        border-radius:30px;
-        cursor:pointer;
-        transition:0.3s;
-    }
-
-    button:hover{
-        background:#ff1e4d;
-        transform:scale(1.05);
-    }
-
-    .section{
-        height:100vh;
-        background:#fff0f3;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-size:2rem;
-        color:#333;
-    }
-   #stars{
+#stars{
     position:fixed;
     top:0;
     left:0;
@@ -109,11 +48,11 @@
 
 .star{
     position:absolute;
-    width:5px;
-    height:5px;
+    width:6px;
+    height:6px;
     background:white;
     border-radius:50%;
-    animation:float 4s linear infinite;
+    animation:float 4s linear forwards;
 }
 
 @keyframes float{
@@ -126,35 +65,49 @@
         opacity:0;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-    <div class="overlay"></div>
-    <div class="content">
-        <h1>Desde el 20 de abril de 2024… hasta el infinito ♾️</h1>
-        <h2>11 • 13 • 20 — Abril no es un mes, es nuestra historia.</h2>
-        <button id="musicBtn" onclick="playMusic()">🎵 Nuestra Canción</button>
+<h1>✨ Abril es nuestro ✨</h1>
+<p>Esta página es solo para nosotros 💙</p>
+
+<button id="musicBtn" onclick="playMusic()">🎵 Nuestra Canción</button>
 <div id="stars"></div>
 
-    </div>
-</div>
-
-<div class="section">
-    Próximamente... 🌊
-</div>
-
 <audio id="music">
-    <source src="cancion.mp3" type="audio/mpeg">
+    <source src="Si No Me Falla El Corazon.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 function playMusic(){
     var music = document.getElementById("music");
+    var btn = document.getElementById("musicBtn");
+
     music.play();
+    btn.innerHTML = "🎵 Está sonando nuestra canción...";
+    btn.style.background = "#6a0572";
+
+    createStars();
+}
+
+function createStars(){
+    const starsContainer = document.getElementById("stars");
+
+    for(let i=0; i<60; i++){
+        const star = document.createElement("div");
+        star.className = "star";
+
+        star.style.left = Math.random() * window.innerWidth + "px";
+        star.style.top = window.innerHeight + "px";
+
+        starsContainer.appendChild(star);
+
+        setTimeout(() => {
+            star.remove();
+        }, 4000);
+    }
 }
 </script>
 

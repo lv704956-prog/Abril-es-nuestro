@@ -6,140 +6,166 @@
 <title>Nuestra Historia</title>
 
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: 'Georgia', serif;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Georgia', serif;
+}
 
-    body, html{
-        height:100%;
-        overflow-x:hidden;
-        scroll-behavior:smooth;
-    }
+body, html{
+    height:100%;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
 
-    .hero{
-        height:100vh;
-        background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
-        background-size:cover;
-        background-position:center;
-        background-attachment:fixed;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        color:white;
-        padding:20px;
-        position:relative;
-    }
+/* HERO */
 
-    .overlay{
-        background:rgba(0,0,0,0.4);
-        position:absolute;
-        width:100%;
-        height:100%;
-        top:0;
-        left:0;
-        z-index:1;
-    }
+.hero{
+    height:100vh;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+    position:relative;
+}
 
-    .content{
-        position:relative;
-        z-index:2;
-        animation:fadeIn 3s ease forwards;
-        opacity:0;
-    }
+.overlay{
+    background:rgba(0,0,0,0.4);
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1;
+}
 
-    @keyframes fadeIn{
-        from{
-            opacity:0;
-            transform:translateY(30px);
-        }
-        to{
-            opacity:1;
-            transform:translateY(0);
-        }
-    }
+.content{
+    position:relative;
+    z-index:2;
+    animation:fadeIn 3s ease forwards;
+    opacity:0;
+}
 
-    h1{
-        font-size:3rem;
-        margin-bottom:20px;
-    }
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
 
-    h2{
-        margin-bottom:20px;
-        font-size:2rem;
-    }
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
 
-    p{
-        margin-bottom:15px;
-        line-height:1.6;
-    }
+h2{
+    margin-bottom:20px;
+    font-size:2rem;
+}
 
-    button{
-        padding:12px 25px;
-        border:none;
-        background:#ff4d6d;
-        color:white;
-        font-size:1rem;
-        border-radius:30px;
-        cursor:pointer;
-        transition:0.3s;
-    }
+p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
 
-    button:hover{
-        background:#ff1e4d;
-        transform:scale(1.05);
-    }
+button{
+    padding:10px 20px;
+    border:none;
+    background:#ff4d6d;
+    color:white;
+    font-size:1rem;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-    .section{
-        min-height:100vh;
-        background:#fff0f3;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        padding:40px;
-    }
+button:hover{
+    background:#ff1e4d;
+    transform:scale(1.05);
+}
 
-    .story{
-        max-width:700px;
-    }
+.section{
+    min-height:100vh;
+    background:#fff0f3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
 
-    /* ⭐ ESTRELLAS */
+.story{
+    max-width:800px;
+}
 
-    #stars{
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        pointer-events:none;
-        z-index:3;
-    }
+/* GALERIA */
 
-    .star{
-        position:absolute;
-        width:8px;
-        height:8px;
-        background:white;
-        border-radius:50%;
-        box-shadow:0 0 10px white;
-        animation:float 6s linear forwards;
-    }
+.gallery{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    margin:20px 0;
+}
 
-    @keyframes float{
-        from{
-            transform:translateY(100vh);
-            opacity:1;
-        }
-        to{
-            transform:translateY(-10vh);
-            opacity:0;
-        }
-    }
+.gallery img{
+    width:400px;
+    max-width:90%;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    transition:0.5s;
+}
+
+/* CARTA */
+
+.letter{
+    display:none;
+    margin-top:20px;
+    padding:30px;
+    background:white;
+    color:#333;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:fadeInLetter 1s ease forwards;
+}
+
+@keyframes fadeInLetter{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ESTRELLAS */
+
+#stars{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:3;
+}
+
+.star{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px white;
+    animation:float 6s linear forwards;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh); opacity:1;}
+    to{transform:translateY(-10vh); opacity:0;}
+}
 
 </style>
 </head>
@@ -148,7 +174,6 @@
 
 <div class="hero">
     <div class="overlay"></div>
-
     <div class="content">
         <h1>Desde el 20 de abril de 2024… hasta el infinito ♾️</h1>
         <h2>11 • 13 • 20 — Abril no es un mes, es nuestra historia.</h2>
@@ -158,47 +183,84 @@
 
 <div id="stars"></div>
 
-<!-- 11 de abril -->
+<!-- 11 -->
 <div class="section">
-    <div class="story">
-        <h2>11 de abril</h2>
-        <p>Tú y yo no sabíamos lo que estaba empezando.</p>
-        <p>Era solo una conversación más… o eso parecía.</p>
-        <p>Pero algo cambió.</p>
-        <p>Y desde entonces, abril dejó de ser un mes cualquiera.</p>
-    </div>
+<div class="story">
+<h2>11 de abril</h2>
+
+<div class="gallery">
+<button onclick="prevSlide(11)">⬅</button>
+<img id="img11" src="foto11-1.jpg">
+<button onclick="nextSlide(11)">➡</button>
 </div>
 
-<!-- 13 de abril -->
-<div class="section">
-    <div class="story">
-        <h2>13 de abril</h2>
-        <p>Contigo todo se sentía distinto.</p>
-        <p>Las risas duraban más.</p>
-        <p>El silencio no incomodaba.</p>
-        <p>Y mi corazón empezó a reconocerte como hogar.</p>
-    </div>
+<button onclick="openLetter('letter11')">💌 Leer esta carta</button>
+
+<div id="letter11" class="letter">
+<p>Tú y yo no sabíamos lo que estaba empezando.</p>
+<p>Era solo una conversación más… o eso parecía.</p>
+<p>Pero algo cambió.</p>
+<p>Y desde entonces, abril dejó de ser un mes cualquiera.</p>
 </div>
 
-<!-- 20 de abril -->
+</div>
+</div>
+
+<!-- 13 -->
 <div class="section">
-    <div class="story">
-        <h2>20 de abril</h2>
-        <p>Desde ese día entendí algo…</p>
-        <p>Tú y yo no coincidimos.</p>
-        <p>Nos encontramos.</p>
-        <p style="margin-top:30px; font-style:italic;">
-            Y esta historia… todavía no termina.<br>
-            Solo está esperando el sonido del mar.
-        </p>
-    </div>
+<div class="story">
+<h2>13 de abril</h2>
+
+<div class="gallery">
+<button onclick="prevSlide(13)">⬅</button>
+<img id="img13" src="foto13-1.jpg">
+<button onclick="nextSlide(13)">➡</button>
+</div>
+
+<button onclick="openLetter('letter13')">💌 Leer esta carta</button>
+
+<div id="letter13" class="letter">
+<p>Contigo todo se sentía distinto.</p>
+<p>Las risas duraban más.</p>
+<p>El silencio no incomodaba.</p>
+<p>Y mi corazón empezó a reconocerte como hogar.</p>
+</div>
+
+</div>
+</div>
+
+<!-- 20 -->
+<div class="section">
+<div class="story">
+<h2>20 de abril</h2>
+
+<div class="gallery">
+<button onclick="prevSlide(20)">⬅</button>
+<img id="img20" src="foto20-1.jpg">
+<button onclick="nextSlide(20)">➡</button>
+</div>
+
+<button onclick="openLetter('letter20')">💌 Leer esta carta</button>
+
+<div id="letter20" class="letter">
+<p>Desde ese día entendí algo…</p>
+<p>Tú y yo no coincidimos.</p>
+<p>Nos encontramos.</p>
+<p style="margin-top:20px; font-style:italic;">
+Y esta historia… todavía no termina.<br>
+Solo está esperando el sonido del mar.
+</p>
+</div>
+
+</div>
 </div>
 
 <audio id="music">
-    <source src="cancion.mp3" type="audio/mpeg">
+<source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 function playMusic(){
     var music = document.getElementById("music");
     var btn = document.getElementById("musicBtn");
@@ -206,27 +268,45 @@ function playMusic(){
     music.play();
     btn.innerHTML = "🎵 Está sonando nuestra canción...";
     btn.style.background = "#6a0572";
-
     createStars();
 }
 
 function createStars(){
     const starsContainer = document.getElementById("stars");
-
     for(let i=0; i<60; i++){
         const star = document.createElement("div");
         star.className = "star";
-
         star.style.left = Math.random() * window.innerWidth + "px";
         star.style.top = window.innerHeight + "px";
-
         starsContainer.appendChild(star);
-
-        setTimeout(() => {
-            star.remove();
-        }, 6000);
+        setTimeout(() => { star.remove(); }, 6000);
     }
 }
+
+function openLetter(id){
+    document.getElementById(id).style.display = "block";
+}
+
+var slides = {
+    11:["foto11-1.jpg","foto11-2.jpg","foto11-3.jpg"],
+    13:["foto13-1.jpg","foto13-2.jpg","foto13-3.jpg"],
+    20:["foto20-1.jpg","foto20-2.jpg","foto20-3.jpg"]
+};
+
+var currentIndex = {11:0,13:0,20:0};
+
+function nextSlide(day){
+    currentIndex[day]++;
+    if(currentIndex[day] >= slides[day].length){ currentIndex[day]=0; }
+    document.getElementById("img"+day).src = slides[day][currentIndex[day]];
+}
+
+function prevSlide(day){
+    currentIndex[day]--;
+    if(currentIndex[day] < 0){ currentIndex[day]=slides[day].length-1; }
+    document.getElementById("img"+day).src = slides[day][currentIndex[day]];
+}
+
 </script>
 
 </body>

@@ -107,7 +107,7 @@ button:hover{
     transition:0.5s;
 }
 
-/* CARTA */
+/* CARTAS NORMALES */
 
 .letter{
     margin-top:20px;
@@ -117,6 +117,7 @@ button:hover{
     box-shadow:0 10px 30px rgba(0,0,0,0.2);
     display:none;
     animation:fadeIn 1s ease forwards;
+    color:#333;
 }
 
 .letter.active{
@@ -141,6 +142,18 @@ button:hover{
     position:relative;
     z-index:2;
 }
+
+/* CARTA DEL MAR EFECTO CRISTAL */
+
+.viaje .letter{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    color:white;
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+/* FRASE FINAL */
 
 .final-message{
     margin-top:40px;
@@ -256,7 +269,7 @@ button:hover{
 </div>
 </div>
 
-<!-- DIA 20 VIAJE -->
+<!-- DIA 20 -->
 <div class="section viaje">
 <div class="overlay"></div>
 
@@ -269,7 +282,7 @@ button:hover{
 <button onclick="nextSlide(20)">➡</button>
 </div>
 
-<button onclick="openFinal()">💌 Abrir la carta frente al mar</button>
+<button onclick="openFinal()">💌 Abrir la carta del mar</button>
 
 <div id="letter20" class="letter">
 <p>Y entonces estábamos ahí.</p>
@@ -283,7 +296,7 @@ Si el mundo se acaba mañana,<br>
 que nos encuentre mirando el mar. ♾️
 </div>
 
-<button id="continueBtn" class="continue-btn" onclick="openUltimate()">
+<button class="continue-btn" onclick="openUltimate()">
 ✨ ¿Seguimos escribiendo nuestra historia?
 </button>
 
@@ -294,7 +307,7 @@ que nos encuentre mirando el mar. ♾️
 <p>Si la vida nos regala años, quiero que sean contigo.</p>
 <p>Si el mundo cambia, quiero cambiar a tu lado.</p>
 <p>Y si algún día olvidamos todo, que nunca olvidemos que nos elegimos.</p>
-<p>Porque amarte no fue casualidad. Fue la decisión más hermosa que he tomado, TE AMO.</p>
+<p>Porque amarte no fue casualidad. Fue la decisión más hermosa que he tomado.</p>
 <p style="font-size:1.3rem; margin-top:15px;">
 Y si me preguntas si quiero seguir escribiendo esta historia…<br>
 La respuesta siempre será sí. ♾️
@@ -357,8 +370,7 @@ finalMessage.style.opacity="0";
 }
 
 function openUltimate(){
-var letter=document.getElementById("ultimateLetter");
-letter.classList.add("active");
+document.getElementById("ultimateLetter").classList.add("active");
 }
 
 function createStars(){

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22 Meses Contigo</title>
+<title>22 razones por las que te sigo prefiriendo</title>
 
 <style>
 *{
@@ -14,7 +14,7 @@
 }
 
 body{
-    background: linear-gradient(to bottom, #fff5f7, #ffe3ec);
+    background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -22,12 +22,12 @@ body{
 }
 
 .book{
-    width:350px;
-    height:500px;
+    width:380px;
+    height:550px;
     background:white;
-    border-radius:15px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.2);
-    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    padding:50px 35px;
     text-align:center;
     display:flex;
     flex-direction:column;
@@ -35,36 +35,43 @@ body{
     position:relative;
 }
 
+h1{
+    font-size:1.4rem;
+    margin-bottom:15px;
+}
+
 h2{
     margin-bottom:20px;
+    color:#ff4d6d;
 }
 
 p{
-    line-height:1.6;
     font-size:1rem;
+    line-height:1.7;
 }
 
 .controls{
     position:absolute;
-    bottom:20px;
+    bottom:25px;
     width:100%;
     left:0;
     display:flex;
     justify-content:space-between;
-    padding:0 30px;
+    padding:0 35px;
 }
 
 button{
-    padding:8px 18px;
+    padding:8px 20px;
     border:none;
     background:#ff4d6d;
     color:white;
-    border-radius:20px;
+    border-radius:25px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{
-    background:#ff1e4d;
+    background:#e60039;
 }
 </style>
 </head>
@@ -72,10 +79,7 @@ button:hover{
 <body>
 
 <div class="book">
-    <div id="content">
-        <h2>22 meses contigo 🧡</h2>
-        <p>Un pequeño libro para el amor más grande.</p>
-    </div>
+    <div id="content"></div>
 
     <div class="controls">
         <button onclick="prevPage()">Anterior</button>
@@ -84,25 +88,44 @@ button:hover{
 </div>
 
 <script>
+
 let page = 0;
 
 const pages = [
+
 {
-title:"22 meses contigo 🧡",
-text:"Un pequeño libro para el amor más grande."
+title:"22 razones por las que te sigo prefiriendo 🧡",
+text:"22 meses después… y todavía eres tú."
 },
-{
-title:"Razón 1",
-text:"Porque contigo aprendí que el amor no pesa… acompaña."
-},
-{
-title:"Momento",
-text:"Aquel día frente al mar donde entendí que no necesitaba ningún otro paisaje si tú estabas conmigo."
-},
+
+{title:"Razón 1", text:"Porque contigo me siento en casa, incluso cuando no estamos en ningún lugar especial."},
+{title:"Razón 2", text:"Porque tu abrazo me reinicia el mundo."},
+{title:"Razón 3", text:"Porque haces que los días simples se sientan importantes."},
+{title:"Razón 4", text:"Porque contigo el silencio no incomoda, acompaña."},
+{title:"Razón 5", text:"Porque me miras como si yo fuera suficiente."},
+{title:"Razón 6", text:"Porque aprendí que el amor puede ser tranquilo… y aun así intenso."},
+{title:"Razón 7", text:"Porque cuando sonríes, todo lo demás pierde importancia."},
+{title:"Razón 8", text:"Porque me eliges incluso en mis días difíciles."},
+{title:"Razón 9", text:"Porque haces equipo conmigo, no competencia."},
+{title:"Razón 10", text:"Porque me haces sentir cuidada sin que me quite libertad."},
+{title:"Razón 11", text:"Porque contigo entendí que el amor no es presión, es paz."},
+{title:"Razón 12", text:"Porque tus manos siempre encuentran las mías."},
+{title:"Razón 13", text:"Porque cuando planeamos cosas, siempre me incluyes en tu futuro."},
+{title:"Razón 14", text:"Porque contigo los miedos se sienten más pequeños."},
+{title:"Razón 15", text:"Porque respetas mis procesos y celebras mis logros."},
+{title:"Razón 16", text:"Porque me haces reír cuando más lo necesito."},
+{title:"Razón 17", text:"Porque me escuchas de verdad."},
+{title:"Razón 18", text:"Porque no tengo que fingir nada cuando estoy contigo."},
+{title:"Razón 19", text:"Porque me haces sentir prioridad sin necesidad de decirlo."},
+{title:"Razón 20", text:"Porque contigo aprendí que el amor se construye todos los días."},
+{title:"Razón 21", text:"Porque incluso después de 22 meses… todavía me emocionas."},
+{title:"Razón 22", text:"Porque si volviera a empezar, te volvería a elegir. 🧡"},
+
 {
 title:"Siempre tú",
-text:"No sé qué venga después… pero si es contigo, ya es hogar 🧡"
+text:"Gracias por estos 22 meses. Y si el futuro es contigo… entonces ya es perfecto."
 }
+
 ];
 
 function showPage(){
@@ -123,6 +146,9 @@ page--;
 showPage();
 }
 }
+
+showPage();
+
 </script>
 
 </body>

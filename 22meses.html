@@ -10,76 +10,57 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Georgia', serif;
+    font-family:'Georgia', serif;
 }
 
 body{
     background: linear-gradient(to bottom, #fff5f7, #ffe3ec);
-    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
+    height:100vh;
 }
 
-/* CONTENEDOR LIBRO */
 .book{
     width:350px;
     height:500px;
-    position:relative;
-    perspective:2000px;
-}
-
-/* PÁGINAS */
-.page{
-    width:100%;
-    height:100%;
-    position:absolute;
     background:white;
+    border-radius:15px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
     padding:40px 30px;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-    transform-origin:left;
-    transition:transform 1s;
-    backface-visibility:hidden;
+    text-align:center;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    align-items:center;
-    text-align:center;
+    position:relative;
 }
 
-.page h2{
+h2{
     margin-bottom:20px;
 }
 
-.page p{
+p{
     line-height:1.6;
     font-size:1rem;
 }
 
-/* ESTADO VOLTEADO */
-.page.flipped{
-    transform:rotateY(-180deg);
-}
-
-/* BOTONES */
 .controls{
     position:absolute;
-    bottom:-70px;
+    bottom:20px;
     width:100%;
+    left:0;
     display:flex;
     justify-content:space-between;
+    padding:0 30px;
 }
 
 button{
-    padding:10px 20px;
+    padding:8px 18px;
     border:none;
     background:#ff4d6d;
     color:white;
     border-radius:20px;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{
@@ -90,55 +71,57 @@ button:hover{
 
 <body>
 
-<div class="book" id="book">
-
-    <!-- PORTADA -->
-    <div class="page" id="page1">
+<div class="book">
+    <div id="content">
         <h2>22 meses contigo 🧡</h2>
         <p>Un pequeño libro para el amor más grande.</p>
-    </div>
-
-    <!-- RAZÓN 1 -->
-    <div class="page" id="page2">
-        <h2>Razón 1</h2>
-        <p>Porque contigo aprendí que el amor no pesa… acompaña.</p>
-    </div>
-
-    <!-- MOMENTO -->
-    <div class="page" id="page3">
-        <h2>Momento</h2>
-        <p>Aquel día frente al mar donde entendí que no necesitaba ningún otro paisaje si tú estabas conmigo.</p>
-    </div>
-
-    <!-- FINAL -->
-    <div class="page" id="page4">
-        <h2>Siempre tú</h2>
-        <p>No sé qué venga después… pero si es contigo, ya es hogar 🧡</p>
     </div>
 
     <div class="controls">
         <button onclick="prevPage()">Anterior</button>
         <button onclick="nextPage()">Siguiente</button>
     </div>
-
 </div>
 
 <script>
-let current = 1;
-const totalPages = 4;
+let page = 0;
+
+const pages = [
+{
+title:"22 meses contigo 🧡",
+text:"Un pequeño libro para el amor más grande."
+},
+{
+title:"Razón 1",
+text:"Porque contigo aprendí que el amor no pesa… acompaña."
+},
+{
+title:"Momento",
+text:"Aquel día frente al mar donde entendí que no necesitaba ningún otro paisaje si tú estabas conmigo."
+},
+{
+title:"Siempre tú",
+text:"No sé qué venga después… pero si es contigo, ya es hogar 🧡"
+}
+];
+
+function showPage(){
+document.getElementById("content").innerHTML =
+"<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";
+}
 
 function nextPage(){
-    if(current < totalPages){
-        document.getElementById("page"+current).classList.add("flipped");
-        current++;
-    }
+if(page < pages.length-1){
+page++;
+showPage();
+}
 }
 
 function prevPage(){
-    if(current > 1){
-        current--;
-        document.getElementById("page"+current).classList.remove("flipped");
-    }
+if(page > 0){
+page--;
+showPage();
+}
 }
 </script>
 

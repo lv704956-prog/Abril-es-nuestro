@@ -78,7 +78,6 @@ button:hover{
     background:#e60039;
 }
 
-/* MUÑEQUITO ANSIOSO NIVEL EXTREMO */
 .waiting{
     font-size:65px;
     margin-bottom:15px;
@@ -95,14 +94,12 @@ button:hover{
 <body>
 
 <div class="book">
-
 <div id="content"></div>
 
 <div class="controls">
 <button onclick="prevPage()">Anterior</button>
 <button onclick="nextPage()">Siguiente</button>
 </div>
-
 </div>
 
 <audio id="music" loop></audio>
@@ -111,6 +108,9 @@ button:hover{
 
 let page = 0;
 let music = document.getElementById("music");
+let currentSong = "";
+
+const defaultSong = "nuestra_cancion.mp3";
 
 const pages = [
 
@@ -175,12 +175,15 @@ waiting:true
 ];
 
 function changeMusic(){
-if(pages[page].song){
-    music.src = pages[page].song;
-} else {
-    music.src = "nuestra_cancion.mp3";
+
+let shouldBe = pages[page].song ? pages[page].song : defaultSong;
+
+if(currentSong !== shouldBe){
+    music.src = shouldBe;
+    music.play().catch(()=>{});
+    currentSong = shouldBe;
 }
-music.play().catch(()=>{});
+
 }
 
 function showPage(){
@@ -188,7 +191,6 @@ function showPage(){
 let book = document.querySelector(".book");
 let contentHTML = "";
 
-/* Imagen */
 if(pages[page].img){
     book.style.justifyContent = "flex-start";
     contentHTML += "<img src='"+pages[page].img+"'>";
@@ -196,7 +198,6 @@ if(pages[page].img){
     book.style.justifyContent = "center";
 }
 
-/* Muñequito ansioso */
 if(pages[page].waiting){
     contentHTML += `<div class="waiting">🧍‍♂️</div>`;
 }
@@ -222,12 +223,14 @@ showPage();
 }
 }
 
-/* Iniciar música automática */
 window.onload = function(){
+music.src = defaultSong;
+music.play().catch(()=>{});
+currentSong = defaultSong;
 showPage();
 };
 
 </script>
 
 </body>
-</html>
+</html

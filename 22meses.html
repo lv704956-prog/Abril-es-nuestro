@@ -1,106 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22 Razones 🧡</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff5f8;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.book{
+width:90%;
+max-width:400px;
+height:80vh;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+padding:20px;
+text-align:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+img{
+width:100%;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+h2{
+margin:10px 0;
+color:#ff4d88;
+}
+
+p{
+font-size:16px;
+line-height:1.4;
+}
+
+.buttons{
+position:absolute;
+bottom:15px;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:0 20px;
+}
+
+button{
+background:#ff4d88;
+border:none;
+color:white;
+padding:8px 15px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.waiting{
+font-size:60px;
+animation:bounce 0.6s infinite alternate;
+margin-bottom:10px;
+}
+
+@keyframes bounce{
+from{transform:translateY(0);}
+to{transform:translateY(-10px);}
+}
+
+</style>
+</head>
+<body>
+
+<div class="book">
+<div id="content"></div>
+
+<div class="buttons">
+<button onclick="prevPage()">←</button>
+<button onclick="nextPage()">→</button>
+</div>
+</div>
+
+<audio id="music" loop></audio>
+
 <script>
 
 let page = 0;
 let music = document.getElementById("music");
 let currentSong = "";
 
-/* Canciones */
 const defaultSong = "nuestra_cancion.mp3";
 const newYorkSong = "newyork.mp3";
 
 const pages = [
-{
-title:"22 razones por las que te sigo prefiriendo 🧡",
-text:"22 meses después… y todavía eres tú.",
-img:"foto_portada.jpeg"
-},
 
-{title:"Razón 1", text:"Porque contigo me siento en casa, incluso cuando no estamos en ningún lugar especial."},
+{title:"22 razones por las que te sigo prefiriendo 🧡",
+text:"22 meses después… y todavía eres tú.",
+img:"foto_portada.jpeg"},
+
+{title:"Razón 1", text:"Porque contigo me siento en casa."},
 {title:"Razón 2", text:"Porque tu abrazo me reinicia el mundo."},
 {title:"Razón 3", text:"Porque haces que los días simples se sientan importantes."},
-{title:"Razón 4", text:"Porque contigo el silencio no incomoda, acompaña."},
+{title:"Razón 4", text:"Porque contigo el silencio no incomoda."},
 {title:"Razón 5", text:"Porque me miras como si yo fuera suficiente."},
-{title:"Razón 6", text:"Porque aprendí que el amor puede ser tranquilo… y aun así intenso."},
-{title:"Razón 7", text:"Porque cuando sonríes, todo lo demás pierde importancia."},
-{title:"Razón 8", text:"Porque me eliges incluso en mis días difíciles."},
-{title:"Razón 9", text:"Porque haces equipo conmigo, no competencia."},
-{title:"Razón 10", text:"Porque me haces sentir cuidada sin que me quite libertad."},
+{title:"Razón 6", text:"Porque me haces reír cuando más lo necesito."},
+{title:"Razón 7", text:"Porque me eliges incluso en mis días difíciles."},
+{title:"Razón 8", text:"Porque haces equipo conmigo."},
+{title:"Razón 9", text:"Porque respetas mis procesos."},
+{title:"Razón 10", text:"Porque contigo el amor es paz."},
 
-{
-title:"Razón 11",
-text:"Porque contigo entendí que el amor no es presión, es paz.",
-img:"foto_mitad.jpeg"
-},
+{title:"Razón 11",
+text:"Porque incluso en lo simple somos felices.",
+img:"foto_mitad.jpeg"},
 
 {title:"Razón 12", text:"Porque tus manos siempre encuentran las mías."},
-{title:"Razón 13", text:"Porque cuando planeamos cosas, siempre me incluyes en tu futuro."},
+{title:"Razón 13", text:"Porque me incluyes en tu futuro."},
 {title:"Razón 14", text:"Porque contigo los miedos se sienten más pequeños."},
-{title:"Razón 15", text:"Porque respetas mis procesos y celebras mis logros."},
-{title:"Razón 16", text:"Porque me haces reír cuando más lo necesito."},
-{title:"Razón 17", text:"Porque me escuchas de verdad."},
-{title:"Razón 18", text:"Porque no tengo que fingir nada cuando estoy contigo."},
-{title:"Razón 19", text:"Porque me haces sentir prioridad sin necesidad de decirlo."},
-{title:"Razón 20", text:"Porque contigo aprendí que el amor se construye todos los días."},
-{title:"Razón 21", text:"Porque incluso después de 22 meses… todavía me emocionas."},
+{title:"Razón 15", text:"Porque celebras mis logros."},
+{title:"Razón 16", text:"Porque me escuchas de verdad."},
+{title:"Razón 17", text:"Porque no tengo que fingir nada contigo."},
+{title:"Razón 18", text:"Porque me haces sentir prioridad."},
+{title:"Razón 19", text:"Porque aprendí que el amor se construye."},
+{title:"Razón 20", text:"Porque todavía me emocionas."},
+{title:"Razón 21", text:"Porque volvería a elegirte."},
 
-{
-title:"Razón 22",
-text:"Porque si volviera a empezar, te volvería a elegir. 🧡",
-img:"foto_final.jpeg"
-},
+{title:"Razón 22",
+text:"Porque eres tú… y siempre serás tú. 🧡",
+img:"foto_final.jpeg"},
 
-{
-title:"Mientras estés en New York 🗽",
-text:`Sé que es solo una semana… pero igual ya te voy a estar extrañando desde el primer día.
+{title:"Mientras estés en New York 🗽",
+text:`Sé que es solo una semana… pero igual ya te voy a estar extrañando.
 
-Voy a extrañar tus abrazos, tus mensajes inesperados, tu voz contándome cualquier cosa.
-
-Prometo contarte todo lo que pase aquí.
-Prometo esperarte.
-Prometo que aunque estés a kilómetros, hay alguien aquí que te piensa todos los días.
+Voy a extrañar tus abrazos, tus mensajes y tu voz.
 
 Disfruta todo, vive todo…
-pero acuérdate que aquí tienes a alguien que cuenta las horas para volver a abrazarte.
+pero acuérdate que aquí tienes a alguien que cuenta los días para volver a abrazarte.
 
 Y sí… a New York te vas sin mí 😭🧡`,
-waiting:true
-}
+waiting:true}
+
 ];
 
 function updateMusic(){
-
 let shouldBe = (page === pages.length - 1) ? newYorkSong : defaultSong;
 
-/* Solo cambia si es diferente */
 if(currentSong !== shouldBe){
-    music.src = shouldBe;
-    music.play().catch(()=>{});
-    currentSong = shouldBe;
+music.src = shouldBe;
+music.play().catch(()=>{});
+currentSong = shouldBe;
 }
-
 }
 
 function showPage(){
 
-let book = document.querySelector(".book");
-let contentHTML = "";
+let html = "";
 
-/* Imagen */
 if(pages[page].img){
-    book.style.justifyContent = "flex-start";
-    contentHTML += "<img src='"+pages[page].img+"'>";
-} else {
-    book.style.justifyContent = "center";
+html += "<img src='"+pages[page].img+"'>";
 }
 
-/* Muñequito ansioso */
 if(pages[page].waiting){
-    contentHTML += `<div class="waiting">🧍‍♂️</div>`;
+html += "<div class='waiting'>🧍‍♂️</div>";
 }
 
-contentHTML += "<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";
+html += "<h2>"+pages[page].title+"</h2>";
+html += "<p>"+pages[page].text+"</p>";
 
-document.getElementById("content").innerHTML = contentHTML;
+document.getElementById("content").innerHTML = html;
 
 updateMusic();
 }
@@ -127,3 +203,6 @@ showPage();
 };
 
 </script>
+
+</body>
+</html

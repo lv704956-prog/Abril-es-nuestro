@@ -52,6 +52,7 @@ h2{
 p{
     font-size:0.95rem;
     line-height:1.6;
+    white-space:pre-line;
 }
 
 .controls{
@@ -77,16 +78,19 @@ button:hover{
     background:#e60039;
 }
 
-/* Muñequito esperando */
+/* Muñequita llorando dramática */
 .waiting{
-    font-size:55px;
+    font-size:70px;
     margin-bottom:15px;
-    animation:esperar 0.8s infinite alternate;
+    animation:llorar 1s infinite;
 }
 
-@keyframes esperar{
-    from{ transform: translateY(0px); }
-    to{ transform: translateY(-12px); }
+@keyframes llorar{
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-6px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
 }
 
 .music-btn{
@@ -205,9 +209,9 @@ if(pages[page].img){
     book.style.justifyContent = "center";
 }
 
-/* Muñequito esperando */
+/* Muñequita llorando */
 if(pages[page].waiting){
-    contentHTML += `<div class="waiting">🧍‍♂️</div>`;
+    contentHTML += `<div class="waiting">👩🏿‍🦱😭</div>`;
 }
 
 contentHTML += "<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";

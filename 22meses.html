@@ -31,7 +31,6 @@ body{
     text-align:center;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
     position:relative;
     overflow:hidden;
 }
@@ -69,6 +68,7 @@ button{
     color:white;
     border-radius:25px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{
@@ -160,10 +160,18 @@ img:"foto_final.jpeg"
 ];
 
 function showPage(){
+
+let book = document.querySelector(".book");
 let contentHTML = "";
 
+// Si tiene imagen → arriba
 if(pages[page].img){
-contentHTML += "<img src='"+pages[page].img+"'>";
+    contentHTML += "<img src='"+pages[page].img+"'>";
+    book.style.justifyContent = "flex-start";
+} 
+// Si no tiene imagen → centrado perfecto
+else{
+    book.style.justifyContent = "center";
 }
 
 contentHTML += "<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";

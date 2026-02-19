@@ -78,28 +78,16 @@ button:hover{
     background:#e60039;
 }
 
-/* Muñequita llorando dramática */
+/* MUÑEQUITO ANSIOSO NIVEL EXTREMO */
 .waiting{
-    font-size:70px;
+    font-size:65px;
     margin-bottom:15px;
-    animation:llorar 1s infinite;
+    animation:ansioso 0.4s infinite alternate;
 }
 
-@keyframes llorar{
-    0% { transform: translateY(0px); }
-    25% { transform: translateY(-6px); }
-    50% { transform: translateY(0px); }
-    75% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
-}
-
-.music-btn{
-    position:absolute;
-    top:15px;
-    right:20px;
-    background:#ff4d6d;
-    padding:6px 12px;
-    font-size:0.8rem;
+@keyframes ansioso{
+    from{ transform: translateY(0px); }
+    to{ transform: translateY(-15px); }
 }
 </style>
 </head>
@@ -107,8 +95,6 @@ button:hover{
 <body>
 
 <div class="book">
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Música</button>
 
 <div id="content"></div>
 
@@ -124,6 +110,7 @@ button:hover{
 <script>
 
 let page = 0;
+let music = document.getElementById("music");
 
 const pages = [
 
@@ -180,26 +167,26 @@ Prometo que aunque estés a kilómetros, hay alguien aquí que te piensa todos l
 Disfruta todo, vive todo…
 pero acuérdate que aquí tienes a alguien que cuenta las horas para volver a abrazarte.
 
-Y aunque suene dramático…
-sí, a New York te vas sin mí 😭🧡`,
+Y sí… a New York te vas sin mí 😭🧡`,
 song:"newyork.mp3",
 waiting:true
 }
 
 ];
 
-function showPage(){
-
-let book = document.querySelector(".book");
-let contentHTML = "";
-let music = document.getElementById("music");
-
-/* Cambiar canción según página */
+function changeMusic(){
 if(pages[page].song){
     music.src = pages[page].song;
 } else {
     music.src = "nuestra_cancion.mp3";
 }
+music.play().catch(()=>{});
+}
+
+function showPage(){
+
+let book = document.querySelector(".book");
+let contentHTML = "";
 
 /* Imagen */
 if(pages[page].img){
@@ -209,14 +196,16 @@ if(pages[page].img){
     book.style.justifyContent = "center";
 }
 
-/* Muñequita llorando */
+/* Muñequito ansioso */
 if(pages[page].waiting){
-    contentHTML += `<div class="waiting">👩🏿‍🦱😭</div>`;
+    contentHTML += `<div class="waiting">🧍‍♂️</div>`;
 }
 
 contentHTML += "<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";
 
 document.getElementById("content").innerHTML = contentHTML;
+
+changeMusic();
 }
 
 function nextPage(){
@@ -233,16 +222,10 @@ showPage();
 }
 }
 
-function toggleMusic(){
-let music = document.getElementById("music");
-if(music.paused){
-    music.play();
-} else {
-    music.pause();
-}
-}
-
+/* Iniciar música automática */
+window.onload = function(){
 showPage();
+};
 
 </script>
 

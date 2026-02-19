@@ -1,125 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22 razones por las que te sigo prefiriendo</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Georgia', serif;
-}
-
-body{
-    background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
-
-.book{
-    width:380px;
-    height:650px;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.2);
-    padding:30px 30px 90px 30px;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-}
-
-img{
-    width:100%;
-    max-height:260px;
-    object-fit:contain;
-    border-radius:15px;
-    margin-bottom:15px;
-}
-
-h2{
-    margin-bottom:15px;
-    color:#ff4d6d;
-}
-
-p{
-    font-size:0.95rem;
-    line-height:1.6;
-    white-space:pre-line;
-}
-
-.controls{
-    position:absolute;
-    bottom:20px;
-    width:100%;
-    left:0;
-    display:flex;
-    justify-content:space-between;
-    padding:0 30px;
-}
-
-button{
-    padding:8px 18px;
-    border:none;
-    background:#ff4d6d;
-    color:white;
-    border-radius:25px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#e60039;
-}
-
-.waiting{
-    font-size:65px;
-    margin-bottom:15px;
-    animation:ansioso 0.4s infinite alternate;
-}
-
-@keyframes ansioso{
-    from{ transform: translateY(0px); }
-    to{ transform: translateY(-15px); }
-}
-</style>
-</head>
-
-<body>
-
-<div class="book">
-<div id="content"></div>
-
-<div class="controls">
-<button onclick="prevPage()">Anterior</button>
-<button onclick="nextPage()">Siguiente</button>
-</div>
-</div>
-
-<audio id="music" loop></audio>
-
 <script>
 
 let page = 0;
 let music = document.getElementById("music");
 let currentSong = "";
+let musicStarted = false;
 
 const defaultSong = "nuestra_cancion.mp3";
 
 const pages = [
-
 {
 title:"22 razones por las que te sigo prefiriendo 🧡",
 text:"22 meses después… y todavía eres tú.",
 img:"foto_portada.jpeg"
 },
-
 {title:"Razón 1", text:"Porque contigo me siento en casa, incluso cuando no estamos en ningún lugar especial."},
 {title:"Razón 2", text:"Porque tu abrazo me reinicia el mundo."},
 {title:"Razón 3", text:"Porque haces que los días simples se sientan importantes."},
@@ -130,13 +23,11 @@ img:"foto_portada.jpeg"
 {title:"Razón 8", text:"Porque me eliges incluso en mis días difíciles."},
 {title:"Razón 9", text:"Porque haces equipo conmigo, no competencia."},
 {title:"Razón 10", text:"Porque me haces sentir cuidada sin que me quite libertad."},
-
 {
 title:"Razón 11",
 text:"Porque contigo entendí que el amor no es presión, es paz.",
 img:"foto_mitad.jpeg"
 },
-
 {title:"Razón 12", text:"Porque tus manos siempre encuentran las mías."},
 {title:"Razón 13", text:"Porque cuando planeamos cosas, siempre me incluyes en tu futuro."},
 {title:"Razón 14", text:"Porque contigo los miedos se sienten más pequeños."},
@@ -147,13 +38,11 @@ img:"foto_mitad.jpeg"
 {title:"Razón 19", text:"Porque me haces sentir prioridad sin necesidad de decirlo."},
 {title:"Razón 20", text:"Porque contigo aprendí que el amor se construye todos los días."},
 {title:"Razón 21", text:"Porque incluso después de 22 meses… todavía me emocionas."},
-
 {
 title:"Razón 22",
 text:"Porque si volviera a empezar, te volvería a elegir. 🧡",
 img:"foto_final.jpeg"
 },
-
 {
 title:"Mientras estés en New York 🗽",
 text:`Sé que es solo una semana… pero igual ya te voy a estar extrañando desde el primer día.
@@ -171,8 +60,16 @@ Y sí… a New York te vas sin mí 😭🧡`,
 song:"newyork.mp3",
 waiting:true
 }
-
 ];
+
+function startMusicIfNeeded(){
+if(!musicStarted){
+    music.src = defaultSong;
+    music.play().catch(()=>{});
+    currentSong = defaultSong;
+    musicStarted = true;
+}
+}
 
 function changeMusic(){
 
@@ -210,6 +107,7 @@ changeMusic();
 }
 
 function nextPage(){
+startMusicIfNeeded();
 if(page < pages.length-1){
 page++;
 showPage();
@@ -217,6 +115,7 @@ showPage();
 }
 
 function prevPage(){
+startMusicIfNeeded();
 if(page > 0){
 page--;
 showPage();
@@ -224,13 +123,7 @@ showPage();
 }
 
 window.onload = function(){
-music.src = defaultSong;
-music.play().catch(()=>{});
-currentSong = defaultSong;
 showPage();
 };
 
 </script>
-
-</body>
-</html>

@@ -4,6 +4,10 @@ let page = 0;
 let music = document.getElementById("music");
 let currentSong = "";
 
+/* Canciones */
+const defaultSong = "nuestra_cancion.mp3";
+const newYorkSong = "newyork.mp3";
+
 const pages = [
 {
 title:"22 razones por las que te sigo prefiriendo 🧡",
@@ -59,30 +63,19 @@ Disfruta todo, vive todo…
 pero acuérdate que aquí tienes a alguien que cuenta las horas para volver a abrazarte.
 
 Y sí… a New York te vas sin mí 😭🧡`,
-song:"newyork.mp3",
 waiting:true
 }
 ];
 
-function changeMusic(){
+function updateMusic(){
 
-let newSong = pages[page].song ? pages[page].song : "nuestra_cancion.mp3";
+let shouldBe = (page === pages.length - 1) ? newYorkSong : defaultSong;
 
-/* SOLO cambia si es diferente */
-if(currentSong !== newSong){
-
-let currentTime = music.currentTime;
-
-music.src = newSong;
-
-music.addEventListener("loadedmetadata", function(){
-    if(newSong === "nuestra_cancion.mp3"){
-        music.currentTime = currentTime;
-    }
+/* Solo cambia si es diferente */
+if(currentSong !== shouldBe){
+    music.src = shouldBe;
     music.play().catch(()=>{});
-}, { once:true });
-
-currentSong = newSong;
+    currentSong = shouldBe;
 }
 
 }
@@ -109,7 +102,7 @@ contentHTML += "<h2>"+pages[page].title+"</h2><p>"+pages[page].text+"</p>";
 
 document.getElementById("content").innerHTML = contentHTML;
 
-changeMusic();
+updateMusic();
 }
 
 function nextPage(){
@@ -127,6 +120,9 @@ showPage();
 }
 
 window.onload = function(){
+music.src = defaultSong;
+music.play().catch(()=>{});
+currentSong = defaultSong;
 showPage();
 };
 
